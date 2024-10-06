@@ -40,11 +40,7 @@ jobs:
           
       # Step 3: Set up Maven and dependencies
       - name: Install dependencies
-        run: mvn install -DskipTests=true
-
-      # Step 4: Run the Serenity tests
-      - name: Run Serenity Screenplay Tests
-        run: mvn clean verify
+        run: mvn install
 
       # Step 5: Upload Serenity Reports (optional but recommended)
       - name: Upload Serenity Reports
