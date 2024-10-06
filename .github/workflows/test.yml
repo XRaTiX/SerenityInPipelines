@@ -25,6 +25,19 @@ jobs:
           java-version: '19.0.0+36'
           distribution: 'temurin' # Choose a JDK provider like Temurin or Zulu
           cache: maven
+      
+      # Step 3: Install Chrome
+      - name: Install Google Chrome
+        run: sudo apt-get install -y google-chrome-stable
+
+      # Step 4: Install ChromeDriver
+      - name: Install ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+          sudo apt-get install -y unzip
+          curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+          sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
 
       # Step 3: Set up Maven and dependencies
       - name: Install dependencies
