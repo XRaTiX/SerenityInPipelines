@@ -21,8 +21,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      -name: Install Maven
-      run: |
+      - name: Install Maven
+        run: |
           apt-get update
           apt-get install -y maven
 
