@@ -37,18 +37,7 @@ jobs:
           curl -sS -o /tmp/chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/129.0.6668.89/linux64/chromedriver-linux64.zip
           sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver-linux64/chromedriver
-# Step 3: Install Chrome
-      - name: Install Google Chrome
-        run: sudo apt-get install -y google-chrome-stable
-
-      # Step 4: Install ChromeDriver
-      - name: Install ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          sudo apt-get install -yqq unzip
-          curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
-          sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          
       # Step 3: Set up Maven and dependencies
       - name: Install dependencies
         run: mvn install -DskipTests=true
