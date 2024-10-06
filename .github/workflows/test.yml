@@ -15,11 +15,13 @@ jobs:
     container:
       image: selenium/standalone-chrome:latest
     steps:
+
+      # Fix permissions
+      - name: Fix permissions
+        run: sudo chmod -R 777 /__w/
       # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: 'main'
 
       # Step 2: Set up JDK (Java 14 in this example, modify as needed)
       - name: Set up JDK 14
